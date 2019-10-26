@@ -29,7 +29,9 @@
     state: present
 
 - name: Restart network service (explicitly).
-  service: name=network state=restarted
+  systemd:
+    name: network
+    state: restarted
 
 # SSH daemon configuration.
 - name: Configure SSH daemon.
@@ -76,15 +78,6 @@
 
 - include_tasks: vmware.yml
   when: vmware_check.rc == 0
-
-# Cleanup tasks.
-- name: Remove unneeded packages.
-  yum:
-    name:
-      - cpp
-      - kernel-devel
-      - kernel-headers
-    state: absent
 
 - name: Clean up yum.
   command: yum clean all

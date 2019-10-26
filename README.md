@@ -20,7 +20,7 @@ Prior to running this role via Packer, you need to make sure Ansible is installe
         "type": "ansible-local",
         "playbook_file": "ansible/main.yml",
         "role_paths": [
-          "/cygwin/c/dev/olidrouin.packer_rhel",
+          "/cygwin/c/dev/ansible-role-packer_rhel",
         ]
       }
     ],
