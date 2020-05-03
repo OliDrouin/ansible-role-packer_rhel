@@ -1,6 +1,7 @@
 ---
 - name: Get VirtualBox version.
-  shell: cat /home/vagrant/.vbox_version
+  command: cat /home/vagrant/.vbox_version
+  changed_when: false
   register: virtualbox_version
 
 - name: Mount VirtualBox guest additions ISO.
@@ -12,8 +13,8 @@
     fstype: iso9660
 
 - name: Run VirtualBox guest additions installation.
-  shell: sh /tmp/vbox/VBoxLinuxAdditions.run
-  failed_when: false
+  command: sh /tmp/vbox/VBoxLinuxAdditions.run
+  changed_when: true
 
 - name: Unmount VirtualBox guest additions ISO.
   mount:
